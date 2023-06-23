@@ -12,6 +12,7 @@ using System.Text;
 using WebApiCore.Configurations;
 using WebApiCore.Controllers;
 using WebApiCore.Data;
+using WebApiCore.Exceptions;
 using WebApiCore.Services.CustomersServices;
 using WebApiCore.Services.UnitOfWork;
 
@@ -91,7 +92,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-
+    app.UseMiddleware(typeof(ExceptionMiddleware));
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
